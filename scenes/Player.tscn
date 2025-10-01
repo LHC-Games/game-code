@@ -1,105 +1,75 @@
-[gd_scene load_steps=27 format=3 uid="uid://cx05kb7g4r1iq"]
+[gd_scene load_steps=17 format=3 uid="uid://cx05kb7g4r1iq"]
 
 [ext_resource type="Script" uid="uid://dhag5o564b7uw" path="res://scripts/player.gd" id="1_kne1u"]
-[ext_resource type="Texture2D" uid="uid://ba1r076f4gc4x" path="res://assets/StickmanPack/Idle/Thin.png" id="2_e80uo"]
-[ext_resource type="Texture2D" uid="uid://bdxj872e8nq1x" path="res://assets/StickmanPack/Run/Run.png" id="3_cxr5p"]
+[ext_resource type="Texture2D" uid="uid://dh5e3gqhxp7gt" path="res://assets/dante.png" id="2_3li8b"]
+[ext_resource type="Texture2D" uid="uid://62qj707rabf3" path="res://assets/assetsfont.png" id="2_mdl7e"]
 [ext_resource type="Script" uid="uid://bf40d86dd35j" path="res://scripts/grapple_controller.gd" id="4_mdl7e"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3dxm6"]
-atlas = ExtResource("2_e80uo")
+[sub_resource type="AtlasTexture" id="AtlasTexture_bruh7"]
+atlas = ExtResource("2_mdl7e")
+region = Rect2(256, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6eyey"]
+atlas = ExtResource("2_mdl7e")
+region = Rect2(320, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3wef"]
+atlas = ExtResource("2_mdl7e")
+region = Rect2(384, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4126"]
+atlas = ExtResource("2_mdl7e")
+region = Rect2(448, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdl7e"]
+atlas = ExtResource("2_3li8b")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lgr22"]
-atlas = ExtResource("2_e80uo")
+[sub_resource type="AtlasTexture" id="AtlasTexture_qu4a1"]
+atlas = ExtResource("2_3li8b")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_trn2v"]
-atlas = ExtResource("2_e80uo")
-region = Rect2(128, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_70d11"]
+atlas = ExtResource("2_3li8b")
+region = Rect2(0, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_03owx"]
-atlas = ExtResource("2_e80uo")
-region = Rect2(192, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_cw2d6"]
+atlas = ExtResource("2_3li8b")
+region = Rect2(64, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wkp8b"]
-atlas = ExtResource("2_e80uo")
-region = Rect2(256, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_khinc"]
+atlas = ExtResource("2_3li8b")
+region = Rect2(128, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_20pc6"]
-atlas = ExtResource("2_e80uo")
-region = Rect2(320, 0, 64, 64)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5vvyt"]
-load_path = "res://.godot/imported/Jump.png-e0a1ee237b510496d170e5ecaabd6de0.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c6i3y"]
-atlas = SubResource("CompressedTexture2D_5vvyt")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c2ibq"]
-atlas = SubResource("CompressedTexture2D_5vvyt")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j4qnp"]
-atlas = SubResource("CompressedTexture2D_5vvyt")
-region = Rect2(0, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fpfj3"]
-atlas = ExtResource("3_cxr5p")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sc1dx"]
-atlas = ExtResource("3_cxr5p")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kjvhd"]
-atlas = ExtResource("3_cxr5p")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5tuhn"]
-atlas = ExtResource("3_cxr5p")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2gh4u"]
-atlas = ExtResource("3_cxr5p")
-region = Rect2(256, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_devvj"]
-atlas = ExtResource("3_cxr5p")
-region = Rect2(320, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3b0ty"]
-atlas = ExtResource("3_cxr5p")
-region = Rect2(384, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bg4s2"]
-atlas = ExtResource("3_cxr5p")
-region = Rect2(448, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hhcpw"]
-atlas = ExtResource("3_cxr5p")
-region = Rect2(512, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkdrv"]
+atlas = ExtResource("2_mdl7e")
+region = Rect2(448, 320, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mxvw5"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3dxm6")
+"texture": SubResource("AtlasTexture_bruh7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lgr22")
+"texture": SubResource("AtlasTexture_6eyey")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_trn2v")
+"texture": SubResource("AtlasTexture_d3wef")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_03owx")
+"texture": SubResource("AtlasTexture_o4126")
+}],
+"loop": true,
+"name": &"dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdl7e")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wkp8b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_20pc6")
+"texture": SubResource("AtlasTexture_qu4a1")
 }],
 "loop": true,
 "name": &"idle",
@@ -107,83 +77,75 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c6i3y")
+"texture": SubResource("AtlasTexture_70d11")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c2ibq")
+"texture": SubResource("AtlasTexture_cw2d6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j4qnp")
+"texture": SubResource("AtlasTexture_khinc")
 }],
 "loop": true,
-"name": &"jump",
+"name": &"walk",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fpfj3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sc1dx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kjvhd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5tuhn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2gh4u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_devvj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3b0ty")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bg4s2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hhcpw")
+"texture": SubResource("AtlasTexture_lkdrv")
 }],
 "loop": true,
-"name": &"run",
+"name": &"wall_slide",
 "speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mdl7e"]
-radius = 4.0
-height = 54.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_qu4a1"]
-radius = 7.07107
+radius = 8.0
+height = 56.0
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 14
 script = ExtResource("1_kne1u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mxvw5")
-animation = &"idle"
+animation = &"wall_slide"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4, 4)
+position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_mdl7e")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(-2, -16)
-shape = SubResource("CircleShape2D_qu4a1")
-
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.75, 1.75)
 
 [node name="GrappleController" type="Node2D" parent="."]
 script = ExtResource("4_mdl7e")
 
 [node name="RayCast2D" type="RayCast2D" parent="GrappleController"]
 target_position = Vector2(800, 0)
+collision_mask = 2
 
 [node name="Line2D" type="Line2D" parent="GrappleController"]
 z_index = -1
 points = PackedVector2Array(0, 0, 0, 0)
 width = 3.0
 default_color = Color(0.192157, 0.733333, 1, 1)
+
+[node name="DashCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="DashDuration" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="WallJump" type="Node2D" parent="."]
+
+[node name="RightWall" type="RayCast2D" parent="WallJump"]
+target_position = Vector2(12, 0)
+collision_mask = 2
+
+[node name="LeftWall" type="RayCast2D" parent="WallJump"]
+target_position = Vector2(-12, 0)
+collision_mask = 2
+
+[connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timer_timeout"]
+[connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timer_timeout"]

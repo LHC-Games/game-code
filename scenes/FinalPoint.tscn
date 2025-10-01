@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://k0i1wqeoof5h"]
+
+[ext_resource type="Texture2D" uid="uid://d15p2ukm1aata" path="res://assets/finalpoint.png" id="1_25y33"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rry47"]
+radius = 24.0
+
+[node name="FinalPoint" type="Area2D"]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rry47")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("1_25y33")

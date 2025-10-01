@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdxj872e8nq1x"
-path="res://.godot/imported/Run.png-5761bb7df0959085546863bdc7b0db76.ctex"
+uid="uid://djkf4pxf4gulc"
+path="res://.godot/imported/checkpoint.png-ce893ca83fd96e39d7439666aaf773e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/StickmanPack/Run/Run.png"
-dest_files=["res://.godot/imported/Run.png-5761bb7df0959085546863bdc7b0db76.ctex"]
+source_file="res://assets/checkpoint.png"
+dest_files=["res://.godot/imported/checkpoint.png-ce893ca83fd96e39d7439666aaf773e8.ctex"]
 
 [params]
 

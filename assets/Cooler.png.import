@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fe004yfail42"
-path="res://.godot/imported/Punch.png-51ff61c2ca575cb29e07f7470c4f3f54.ctex"
+uid="uid://cyl87cvfstxnh"
+path="res://.godot/imported/Cooler.png-f5b1e55d8848d8ce801df4c0b99dcf08.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/StickmanPack/Punch/Punch.png"
-dest_files=["res://.godot/imported/Punch.png-51ff61c2ca575cb29e07f7470c4f3f54.ctex"]
+source_file="res://assets/Cooler.png"
+dest_files=["res://.godot/imported/Cooler.png-f5b1e55d8848d8ce801df4c0b99dcf08.ctex"]
 
 [params]
 

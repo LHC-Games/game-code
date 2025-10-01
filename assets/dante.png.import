@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dosrqb8j33npc"
-path="res://.godot/imported/Full.png-af0dcd7b57221aea809118cfb38e1da2.ctex"
+uid="uid://dh5e3gqhxp7gt"
+path="res://.godot/imported/dante.png-ccf8b71e10f6e8d7475a1d19418201e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/StickmanPack/Full/Full.png"
-dest_files=["res://.godot/imported/Full.png-af0dcd7b57221aea809118cfb38e1da2.ctex"]
+source_file="res://assets/dante.png"
+dest_files=["res://.godot/imported/dante.png-ccf8b71e10f6e8d7475a1d19418201e2.ctex"]
 
 [params]
 

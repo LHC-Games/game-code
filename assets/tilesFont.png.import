@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vk63luqf2yuw"
-path="res://.godot/imported/Jump.png-e0a1ee237b510496d170e5ecaabd6de0.ctex"
+uid="uid://dheivpbtdx64o"
+path="res://.godot/imported/tilesFont.png-1ea47556bbf9adc6f4d8ed40af257351.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/StickmanPack/Jump/Jump.png"
-dest_files=["res://.godot/imported/Jump.png-e0a1ee237b510496d170e5ecaabd6de0.ctex"]
+source_file="res://assets/tilesFont.png"
+dest_files=["res://.godot/imported/tilesFont.png-1ea47556bbf9adc6f4d8ed40af257351.ctex"]
 
 [params]
 
