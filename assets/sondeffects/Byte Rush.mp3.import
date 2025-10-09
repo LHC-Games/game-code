@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bsko0hptuvkgv"
+path="res://.godot/imported/Byte Rush.mp3-2139afd1b1ef18a2ff2293d88ea02424.mp3str"
+
+[deps]
+
+source_file="res://assets/sondeffects/Byte Rush.mp3"
+dest_files=["res://.godot/imported/Byte Rush.mp3-2139afd1b1ef18a2ff2293d88ea02424.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

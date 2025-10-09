@@ -34,6 +34,7 @@ func _physics_process(delta: float) -> void:
 		gc.retract()
 	handle_wall_slide()
 	jump(delta)
+	
 	speed_update(delta)
 	move_and_slide()
 	if not is_die:
@@ -45,14 +46,18 @@ func _physics_process(delta: float) -> void:
 
 func speed_update(delta: float) -> void:
 	if is_dashing:
+		#$DashSound.play() ta com um delay que não consegui resolver
 		velocity.x = sign(velocity.x) * dash_speed
 		velocity.y = 0.0
+		
 	elif is_on_floor() or is_wall_sliding:
 		var direction = Input.get_axis("left", "right")
 		if direction:
 			velocity.x = move_toward(velocity.x, direction * (move_speed + move_speed_variation), acceleration*delta)
+			
 		else:
 			velocity.x = move_toward(velocity.x, 0, friction*delta)
+		
 	if Input.is_action_just_pressed("dash") and can_dash and sign(velocity.x) and not gc.launched and not is_wall_sliding:
 		var direction = Input.get_axis("left", "right")
 		if direction:
@@ -66,9 +71,11 @@ func speed_update(delta: float) -> void:
 func jump(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
+		$LandingSound.play()
 
 	if is_on_floor() and Input.is_action_just_pressed("up"):
 		velocity.y = jump_velocity
+		$JumpSound.play()
 	elif is_wall_sliding and Input.is_action_just_pressed("up"):
 		wall_jump()
 
@@ -90,6 +97,7 @@ func die_check() -> void:
 			var layer_mask = PhysicsServer2D.body_get_collision_layer(collider_rid)
 			if layer_mask == 4:
 				die()
+				$DeathSound.play()
 				break
 
 
@@ -126,6 +134,7 @@ func wall_jump():
 	var wall_normal = right_wall_cast.get_collision_normal() if right_wall_cast.is_colliding() else left_wall_cast.get_collision_normal()
 	velocity.y = jump_velocity
 	velocity.x = wall_normal.x * wall_jump_force
+	$WallJumpSound.play()
 
 
 func animation() -> void:
