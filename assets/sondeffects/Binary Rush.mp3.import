@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dhnmsimly1y4e"
+path="res://.godot/imported/Binary Rush.mp3-144860eda5942639c40dc10510bb65e1.mp3str"
+
+[deps]
+
+source_file="res://assets/sondeffects/Binary Rush.mp3"
+dest_files=["res://.godot/imported/Binary Rush.mp3-144860eda5942639c40dc10510bb65e1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

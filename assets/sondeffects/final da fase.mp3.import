@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b6o6o0rcl46pd"
+path="res://.godot/imported/final da fase.mp3-f3c56819332861be0a96f42d3218b15f.mp3str"
+
+[deps]
+
+source_file="res://assets/sondeffects/final da fase.mp3"
+dest_files=["res://.godot/imported/final da fase.mp3-f3c56819332861be0a96f42d3218b15f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
