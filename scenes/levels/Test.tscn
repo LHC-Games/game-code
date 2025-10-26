@@ -1,15 +1,19 @@
-[gd_scene load_steps=20 format=4 uid="uid://kcw8bxtdgieg"]
+[gd_scene load_steps=26 format=4 uid="uid://kcw8bxtdgieg"]
 
 [ext_resource type="Script" uid="uid://beey1dd406olw" path="res://scripts/test.gd" id="1_hbbmf"]
 [ext_resource type="Texture2D" uid="uid://dheivpbtdx64o" path="res://assets/tilesFont.png" id="1_yd5ho"]
-[ext_resource type="PackedScene" uid="uid://cx05kb7g4r1iq" path="res://scenes/Player.tscn" id="2_17xb1"]
+[ext_resource type="PackedScene" uid="uid://3qbll8ny5614" path="res://scenes/Player.tscn" id="2_17xb1"]
 [ext_resource type="Texture2D" uid="uid://62qj707rabf3" path="res://assets/assetsfont.png" id="2_d6f4j"]
 [ext_resource type="PackedScene" uid="uid://bk1ynymf2qsxd" path="res://scenes/Checkpoint.tscn" id="3_17xb1"]
 [ext_resource type="Texture2D" uid="uid://cyl87cvfstxnh" path="res://assets/Cooler.png" id="3_d12kh"]
 [ext_resource type="PackedScene" uid="uid://k0i1wqeoof5h" path="res://scenes/FinalPoint.tscn" id="5_f4m1s"]
 [ext_resource type="Texture2D" uid="uid://c5p06p1hulwb4" path="res://assets/BackGroudFont.png" id="5_wcqrr"]
 [ext_resource type="Texture2D" uid="uid://dht1j1w78w2hj" path="res://assets/FontAssets.png" id="6_th8mm"]
-[ext_resource type="AudioStream" uid="uid://bsko0hptuvkgv" path="res://assets/sondeffects/Byte Rush.mp3" id="8_i26u2"]
+[ext_resource type="AudioStream" uid="uid://bsko0hptuvkgv" path="res://assets/soundeffects/Byte Rush.mp3" id="8_i26u2"]
+[ext_resource type="Texture2D" uid="uid://c3sgrli0yr6g0" path="res://assets/Obstacles.png" id="11_th8mm"]
+[ext_resource type="PackedScene" uid="uid://bn00764en6jcg" path="res://scenes/obstacle/Shock.tscn" id="12_fm1g5"]
+[ext_resource type="PackedScene" uid="uid://dkipgfk84l0r8" path="res://scenes/obstacle/Processor.tscn" id="13_wakqi"]
+[ext_resource type="PackedScene" uid="uid://bufogtl1y0snu" path="res://scenes/obstacle/Wind.tscn" id="14_o7vvw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d12kh"]
 texture = ExtResource("2_d6f4j")
@@ -279,6 +283,15 @@ use_texture_padding = false
 sources/0 = SubResource("TileSetAtlasSource_wcqrr")
 sources/1 = SubResource("TileSetAtlasSource_th8mm")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o7vvw"]
+texture = ExtResource("11_th8mm")
+texture_region_size = Vector2i(64, 64)
+
+[sub_resource type="TileSet" id="TileSet_1fss3"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_o7vvw")
+
 [node name="Test" type="Node2D"]
 script = ExtResource("1_hbbmf")
 
@@ -305,12 +318,31 @@ position = Vector2(3296, -736)
 [node name="FinalPoint" parent="." instance=ExtResource("5_f4m1s")]
 position = Vector2(4448, -736)
 
-[node name="Player" parent="." instance=ExtResource("2_17xb1")]
-position = Vector2(-960, 464)
-
 [node name="Background music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_i26u2")
 volume_db = -15.379
 autoplay = true
+
+[node name="Player" parent="." instance=ExtResource("2_17xb1")]
+position = Vector2(-792, 472)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_1fss3")
+
+[node name="Shock2" parent="." instance=ExtResource("12_fm1g5")]
+position = Vector2(1424, 760)
+start_time = 0.3
+
+[node name="Shock3" parent="." instance=ExtResource("12_fm1g5")]
+position = Vector2(1424, 696)
+start_time = 1.0
+
+[node name="Processor" parent="." instance=ExtResource("13_wakqi")]
+position = Vector2(1192, 808)
+
+[node name="Wind" parent="." instance=ExtResource("14_o7vvw")]
+position = Vector2(-608, 480)
+rotation = -3.14159
+direction = 1
 
 [connection signal="body_entered" from="FinalPoint" to="." method="_on_final_point_body_entered"]

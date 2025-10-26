@@ -1,0 +1,100 @@
+[gd_scene load_steps=11 format=3 uid="uid://dkipgfk84l0r8"]
+
+[ext_resource type="Script" uid="uid://bb1g1v001ar7e" path="res://scripts/obstacle/processor.gd" id="1_l0vmq"]
+[ext_resource type="Texture2D" uid="uid://c3sgrli0yr6g0" path="res://assets/Obstacles.png" id="2_surf1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0vmq"]
+atlas = ExtResource("2_surf1")
+region = Rect2(319, 64, 62, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_surf1"]
+atlas = ExtResource("2_surf1")
+region = Rect2(319, 128, 62, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ixl5"]
+atlas = ExtResource("2_surf1")
+region = Rect2(319, 192, 62, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ks40"]
+atlas = ExtResource("2_surf1")
+region = Rect2(319, 256, 62, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tm4q"]
+atlas = ExtResource("2_surf1")
+region = Rect2(319, 0, 62, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_85vn8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0vmq")
+}],
+"loop": true,
+"name": &"activating",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_surf1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ixl5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ks40")
+}],
+"loop": true,
+"name": &"active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tm4q")
+}],
+"loop": true,
+"name": &"inactive",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_l0vmq"]
+script/source = "extends AnimatedSprite2D
+
+func _ready() -> void:
+	play(\"inactive\")
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ch6f"]
+size = Vector2(36, 36)
+
+[node name="Processor" type="Area2D"]
+collision_layer = 4
+script = ExtResource("1_l0vmq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -1
+sprite_frames = SubResource("SpriteFrames_85vn8")
+animation = &"activating"
+script = SubResource("GDScript_l0vmq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_4ch6f")
+
+[node name="Active" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="Inactive" type="Timer" parent="."]
+one_shot = true
+
+[node name="Start" type="Timer" parent="."]
+one_shot = true
+
+[node name="Activating" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Active" to="." method="_on_active_timeout"]
+[connection signal="timeout" from="Inactive" to="." method="_on_inactive_timeout"]
+[connection signal="timeout" from="Start" to="." method="_on_start_timeout"]
+[connection signal="timeout" from="Activating" to="." method="_on_activating_timeout"]

@@ -1,38 +1,34 @@
 extends Node2D
 
 @export var default_rest_length = 250.0
-var rest_length = default_rest_length
-var stiffness = 100.0
-var damping = 10.0
 
 @onready var player := get_parent()
 @onready var ray := $RayCast2D
 @onready var rope := $Line2D
 
+var rest_length = default_rest_length
+var stiffness = 100.0
+var damping = 10.0
 var launched = false
 var target: Vector2
 
-func _physics_process(delta: float) -> void:
-	if player.is_on_floor():
-		retract()
-		
 
-func _process(delta):
-	if not player.is_die:
+func _physics_process(delta: float) -> void:
+	if not player.die.is_die:
 		ray.look_at(get_global_mouse_position())
+		if player.is_on_floor() and launched:
+			retract()
 		if Input.is_action_just_pressed("grapple"):
 			launch()
-			$GrappleLauchSound.play()
-			
-		if Input.is_action_just_released("grapple"):
+		if Input.is_action_just_released("grapple") and launched:
 			retract()
-			$GrappleRetractSound.play()
-			
 		if launched:
 			handle_grapple(delta)
 
+
 func launch():
-	if ray.is_colliding() and not player.is_on_floor() and not player.is_dashing and player.global_position.distance_to(ray.get_collision_point()) <= default_rest_length:
+	if can_grapple():
+		$GrappleLauchSound.play()
 		launched = true
 		rest_length = player.global_position.distance_to(ray.get_collision_point()) -10
 		target = ray.get_collision_point()
@@ -40,6 +36,7 @@ func launch():
 
 
 func retract():
+	$GrappleRetractSound.play()
 	launched = false
 	rope.hide()
 
@@ -61,3 +58,10 @@ func handle_grapple(delta):
 
 func update_rope():
 	rope.set_point_position(1, to_local(target))
+
+
+func can_grapple() -> bool:
+	return 	ray.is_colliding() and \
+			not player.is_on_floor() and \
+			not player.dash.is_dashing and \
+			player.global_position.distance_to(ray.get_collision_point()) <= default_rest_length

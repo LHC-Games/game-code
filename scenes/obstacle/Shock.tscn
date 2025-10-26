@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://bn00764en6jcg"]
+
+[ext_resource type="Texture2D" uid="uid://c3sgrli0yr6g0" path="res://assets/Obstacles.png" id="1_2c4bj"]
+[ext_resource type="Script" uid="uid://bxiuo0axbi6g3" path="res://scripts/obstacle/shock.gd" id="1_7mce0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mce0"]
+atlas = ExtResource("1_2c4bj")
+region = Rect2(257, 128, 60, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8f3j"]
+atlas = ExtResource("1_2c4bj")
+region = Rect2(257, 192, 60, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rs5cp"]
+atlas = ExtResource("1_2c4bj")
+region = Rect2(256, 256, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_85vn8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mce0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8f3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rs5cp")
+}],
+"loop": true,
+"name": &"shock",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_7mce0"]
+script/source = "extends AnimatedSprite2D
+
+func _ready() -> void:
+	play(\"shock\")
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ch6f"]
+size = Vector2(32, 64)
+
+[node name="Shock" type="Area2D"]
+collision_layer = 4
+script = ExtResource("1_7mce0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_85vn8")
+animation = &"shock"
+script = SubResource("GDScript_7mce0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4ch6f")
+
+[node name="Active" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="Inactive" type="Timer" parent="."]
+one_shot = true
+
+[node name="Start" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Active" to="." method="_on_active_timeout"]
+[connection signal="timeout" from="Inactive" to="." method="_on_inactive_timeout"]
+[connection signal="timeout" from="Start" to="." method="_on_start_timeout"]
