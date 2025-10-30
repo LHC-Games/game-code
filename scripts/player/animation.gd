@@ -3,6 +3,13 @@ extends AnimatedSprite2D
 @onready var player := get_parent()
 
 func _physics_process(_delta: float) -> void:
+	if player.wall_jump.is_wall_sliding:
+		hide()
+		player.wall_slide.show()
+	else:
+		player.wall_slide.hide()
+		show()
+	
 	if player.velocity.x < 0:
 		flip_h = true
 	elif player.velocity.x > 0:
@@ -11,7 +18,9 @@ func _physics_process(_delta: float) -> void:
 		play("dash")
 	elif not player.is_on_floor():
 		if player.wall_jump.is_wall_sliding:
-			play("wall_slide")
+			pass
+			#flip_h = false
+			#play("wall_slide")
 		else:
 			play("jump")
 	else:

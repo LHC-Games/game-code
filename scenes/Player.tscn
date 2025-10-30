@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://b0bfkh40qn6t6" path="res://scripts/player/player.gd" id="1_kne1u"]
 [ext_resource type="Texture2D" uid="uid://dh5e3gqhxp7gt" path="res://assets/dante.png" id="2_3li8b"]
-[ext_resource type="Texture2D" uid="uid://62qj707rabf3" path="res://assets/assetsfont.png" id="2_mdl7e"]
 [ext_resource type="Script" uid="uid://cr74gie8dov85" path="res://scripts/player/animation.gd" id="4_khinc"]
 [ext_resource type="Script" uid="uid://q8vwrx3wloi1" path="res://scripts/player/move.gd" id="4_mdl7e"]
 [ext_resource type="Script" uid="uid://oa0d12jxl47t" path="res://scripts/player/jump.gd" id="5_cw2d6"]
@@ -18,6 +17,9 @@
 [ext_resource type="Script" uid="uid://cfnaybex4n03t" path="res://scripts/player/grapple.gd" id="12_p7iby"]
 [ext_resource type="Script" uid="uid://dy8kg1eesdck3" path="res://scripts/player/die.gd" id="15_srp4u"]
 [ext_resource type="Script" uid="uid://dn7rwbiavsv2f" path="res://scripts/player/gravity.gd" id="17_jfpux"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jfpux"]
+height = 58.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p7iby"]
 atlas = ExtResource("2_3li8b")
@@ -54,10 +56,6 @@ region = Rect2(128, 65, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_gv3ic"]
 atlas = ExtResource("2_3li8b")
 region = Rect2(192, 65, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lkdrv"]
-atlas = ExtResource("2_mdl7e")
-region = Rect2(448, 320, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mxvw5"]
 animations = [{
@@ -107,36 +105,40 @@ animations = [{
 "loop": true,
 "name": &"walk",
 "speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lkdrv")
-}],
-"loop": true,
-"name": &"wall_slide",
-"speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v6fml"]
-radius = 8.0
-height = 56.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8lor"]
+atlas = ExtResource("2_3li8b")
+region = Rect2(0, 260, 64, 65)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jfpux"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8lor")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 14
 script = ExtResource("1_kne1u")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 2)
+shape = SubResource("CapsuleShape2D_jfpux")
+
 [node name="Animation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mxvw5")
-animation = &"dash"
+animation = &"walk"
+frame_progress = 0.500534
 script = ExtResource("4_khinc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -100)
 zoom = Vector2(1.5, 1.5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
-shape = SubResource("CapsuleShape2D_v6fml")
 
 [node name="Move" type="Node2D" parent="."]
 script = ExtResource("4_mdl7e")
@@ -166,11 +168,11 @@ stream = ExtResource("9_bruh7")
 script = ExtResource("7_bruh7")
 
 [node name="RightWall" type="RayCast2D" parent="WallJump"]
-target_position = Vector2(12, 0)
+target_position = Vector2(9, 0)
 collision_mask = 2
 
 [node name="LeftWall" type="RayCast2D" parent="WallJump"]
-target_position = Vector2(-12, 0)
+target_position = Vector2(-17, 0)
 collision_mask = 2
 
 [node name="WallJumpSound" type="AudioStreamPlayer2D" parent="WallJump"]
@@ -209,6 +211,11 @@ script = ExtResource("17_jfpux")
 position = Vector2(960, -464)
 stream = ExtResource("6_70d11")
 volume_db = 10.133
+
+[node name="WallSlide" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(18, 0)
+sprite_frames = SubResource("SpriteFrames_jfpux")
 
 [connection signal="timeout" from="Dash/DashCooldown" to="Dash" method="_on_dash_cooldown_timer_timeout"]
 [connection signal="timeout" from="Dash/DashDuration" to="Dash" method="_on_dash_duration_timer_timeout"]

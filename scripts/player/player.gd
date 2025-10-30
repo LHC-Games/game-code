@@ -8,7 +8,11 @@ extends CharacterBody2D
 @onready var grapple := $Grapple
 @onready var die := $Die
 @onready var collision_shape := $CollisionShape2D
+@onready var wall_slide := $WallSlide
 @onready var gravity := $Gravity
+
+@onready var right_wall_cast = $WallJump/RightWall
+@onready var left_wall_cast = $WallJump/LeftWall
 
 
 func _ready() -> void:
@@ -18,3 +22,15 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
+	if right_wall_cast.is_colliding():
+		wall_slide.flip_h = true
+		var tmp: Vector2
+		tmp.x = -27
+		tmp.y = 0
+		wall_slide.position = tmp
+	elif left_wall_cast.is_colliding():
+		wall_slide.flip_h = false
+		var tmp: Vector2
+		tmp.x = 18
+		tmp.y = 0
+		wall_slide.position = tmp
