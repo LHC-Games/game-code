@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqcej3hpdo1mq"]
+
+[ext_resource type="Script" uid="uid://bmcme0fjuhkva" path="res://scripts/enemies/blue.gd" id="1_xcxip"]
+[ext_resource type="Texture2D" uid="uid://gq14wob8i2oa" path="res://assets/enemies/blue.png" id="2_xcxip"]
+
+[node name="Blue" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_xcxip")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(100, 100, 100, 1)
+texture = ExtResource("2_xcxip")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-7, -11, 8, -11, 17, -2, 17, 7, 8, 7, 8, 10, -7, 10, -7, 7, -16, 7, -16, -2)
+
+[node name="Timeout" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Timeout" to="." method="_on_timeout_timeout"]

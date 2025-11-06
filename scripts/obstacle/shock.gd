@@ -4,6 +4,7 @@ extends Area2D
 @export var start_time = 0.1
 @export var duration_activated = 3.0
 @export var duration_deactivated = 1.0
+@export var infinite = false
 
 
 func _on_body_entered(_body: Node2D) -> void:
@@ -16,7 +17,8 @@ func _ready() -> void:
 	$Start.wait_time = start_time
 	$Active.wait_time = duration_activated
 	$Inactive.wait_time = duration_deactivated
-	$Start.start()
+	if not infinite:
+		$Start.start()
 
 
 func _on_start_timeout() -> void:

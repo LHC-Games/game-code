@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbaktppov4fj7"]
+
+[ext_resource type="Script" uid="uid://drnnr0e7b0ayf" path="res://scripts/enemies/pink.gd" id="1_2wnnm"]
+[ext_resource type="Texture2D" uid="uid://cjei1mvxkcrnq" path="res://assets/enemies/pink.png" id="2_vugar"]
+
+[node name="Pink" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_2wnnm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_vugar")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-5, -12, 8, -12, 13, -8, 13, -1, 9, 4, 9, 11, 7, 14, -3, 14, -5, 12, -5, 4, -9, -1, -9, -8)
+
+[node name="Timeout" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timeout" to="." method="_on_timeout_timeout"]

@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var white = false
+
 @onready var move := $Move
 @onready var dash := $Dash
 @onready var jump := $Jump
@@ -10,7 +12,6 @@ extends CharacterBody2D
 @onready var collision_shape := $CollisionShape2D
 @onready var wall_slide := $WallSlide
 @onready var gravity := $Gravity
-
 @onready var right_wall_cast = $WallJump/RightWall
 @onready var left_wall_cast = $WallJump/LeftWall
 
@@ -18,6 +19,9 @@ extends CharacterBody2D
 func _ready() -> void:
 	set_floor_max_angle(0.7)
 	Autoload.checkpoint = global_position
+	if white:
+		self.modulate = Color(10000, 10000, 10000, 1)
+	Autoload.player = self
 
 
 func _physics_process(_delta: float) -> void:

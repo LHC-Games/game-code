@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciclahdqo4g5j"]
+
+[ext_resource type="Script" uid="uid://dc1cqn0xv6q3i" path="res://scripts/enemies/yellow.gd" id="1_vdlk8"]
+[ext_resource type="Texture2D" uid="uid://cxb2u1tbierjo" path="res://assets/enemies/yellow.png" id="2_3y1mv"]
+
+[node name="Yellow" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_vdlk8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_3y1mv")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-4, -11, 2, -11, 11, -2, 11, 13, -13, 13, -13, -2)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
