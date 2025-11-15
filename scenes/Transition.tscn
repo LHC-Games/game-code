@@ -7,10 +7,12 @@ script/source = "extends CanvasLayer
 func _ready() -> void:
 	if Autoload.in_software:
 		Hud.hide_timer()
+		Autoload.in_software = false
 		$Level2/MarginContainer/Button2.text = \"Você conseguiu \" + Autoload.player_name + \"!\\n\\nSeu tempo foi: \" + Hud.timer_label.text + \"\\n\\nPressione para continuar...\"
 		$Level2.show()
 		$Level1.hide()
 	else:
+		Autoload.in_software = true
 		$Level2.hide()
 		$Level1.show()
 

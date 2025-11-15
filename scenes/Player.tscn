@@ -194,6 +194,11 @@ points = PackedVector2Array(0, 0, 0, 0)
 width = 3.0
 default_color = Color(0.192157, 0.733333, 1, 1)
 
+[node name="Aim" type="Line2D" parent="Grapple"]
+points = PackedVector2Array(0, 0, 0, 0)
+width = 3.0
+default_color = Color(1, 1, 1, 0.0196078)
+
 [node name="GrappleLauchSound" type="AudioStreamPlayer" parent="Grapple"]
 stream = ExtResource("10_6eyey")
 

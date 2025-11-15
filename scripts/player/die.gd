@@ -2,12 +2,13 @@ extends Node2D
 
 @onready var player := get_parent()
 
+
 var is_die = false
 
 
 func _physics_process(_delta: float) -> void:
-	if Input.is_action_just_pressed("respawn"):
-		die()
+	if Input.is_action_just_pressed("respawn") and not is_die:
+		Autoload.needs_to_die = true
 	if not is_die:
 		if Autoload.needs_to_die:
 			Autoload.needs_to_die = false
@@ -26,6 +27,7 @@ func die() -> void:
 	if Autoload.in_software:
 		$DeathSound.play()
 		player.collision_shape.disabled = true
+		player.grapple.retract()
 		is_die = true
 		player.modulate = Color(10000, 10000, 10000, 0.5)
 		player.velocity.x = sign(player.velocity.x) * 15
@@ -43,6 +45,7 @@ func die() -> void:
 	else:	
 		$DeathSound.play()
 		player.collision_shape.disabled = true
+		player.grapple.retract()
 		is_die = true
 		player.modulate = Color(0.75, 0.75, 0.75, 0.5)
 		player.velocity.x = sign(player.velocity.x) * 15

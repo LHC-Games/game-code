@@ -322,10 +322,12 @@ start_time = 1.0
 [node name="Shock wj1" parent="Killables/Shock/Shock Wall Jump" instance=ExtResource("8_6cec1")]
 position = Vector2(-930, -1066)
 start_time = 1.0
+duration_deactivated = 2.0
 
 [node name="Shock wj2" parent="Killables/Shock/Shock Wall Jump" instance=ExtResource("8_6cec1")]
 position = Vector2(-1122, -1450)
-start_time = 1.0
+start_time = 2.0
+duration_deactivated = 2.0
 
 [node name="Shock Dash" type="Node" parent="Killables/Shock"]
 
@@ -379,7 +381,6 @@ position = Vector2(-920, 464)
 
 [node name="Background music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_crxwn")
-volume_db = -15.379
 autoplay = true
 script = SubResource("GDScript_crxwn")
 
@@ -432,7 +433,7 @@ offset_top = 144.0
 offset_right = 701.0
 offset_bottom = 219.0
 text = "Uso o ponteiro do mouse para mirar e 
-clique com o botão esquerdo
+segure o botão esquerdo do mouse
 enquanto está no ar para fixar a corda"
 
 [node name="Label3" type="Label" parent="Labels"]
@@ -445,10 +446,10 @@ text = "Use <W> ou <Space> para pular"
 
 [node name="Label4" type="Label" parent="Labels"]
 layout_mode = 0
-offset_left = -128.0
-offset_top = -664.0
-offset_right = 123.0
-offset_bottom = -641.0
+offset_left = 896.0
+offset_top = 144.0
+offset_right = 1147.0
+offset_bottom = 167.0
 text = "Use <Shift> para disparar o dash"
 
 [node name="Label5" type="Label" parent="Labels"]

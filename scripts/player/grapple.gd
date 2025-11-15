@@ -5,6 +5,7 @@ extends Node2D
 @onready var player := get_parent()
 @onready var ray := $RayCast2D
 @onready var rope := $Line2D
+@onready var aim := $Aim
 
 var rest_length = default_rest_length
 var stiffness = 100.0
@@ -13,17 +14,23 @@ var launched = false
 var target: Vector2
 
 
+func _ready() -> void:
+	aim.hide()
+
+
 func _physics_process(delta: float) -> void:
+	# update_aim()
 	if not player.die.is_die:
 		ray.look_at(get_global_mouse_position())
 		if player.is_on_floor() and launched:
 			retract()
-		if Input.is_action_just_pressed("grapple"):
+		if Input.is_action_pressed("grapple") and not launched:
 			launch()
 		if Input.is_action_just_released("grapple") and launched:
 			retract()
 		if launched:
 			handle_grapple(delta)
+	
 
 
 func launch():
@@ -58,6 +65,12 @@ func handle_grapple(delta):
 
 func update_rope():
 	rope.set_point_position(1, to_local(target))
+	
+
+func update_aim():
+	var local_mouse_pos = to_local(get_global_mouse_position())
+	var direction = local_mouse_pos.normalized()
+	aim.set_point_position(1, direction * default_rest_length)
 
 
 func can_grapple() -> bool:
