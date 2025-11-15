@@ -30,7 +30,8 @@ func can_dash() -> bool:
 			dash_allowed and \
 			sign(player.velocity.x) and \
 			not player.grapple.launched and \
-			not player.wall_jump.is_wall_sliding
+			not player.wall_jump.is_wall_sliding and \
+			not player.die.is_die
 
 
 func _on_dash_cooldown_timer_timeout():

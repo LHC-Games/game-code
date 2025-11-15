@@ -10,13 +10,14 @@ script = ExtResource("1_cca2t")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(100, 100, 100, 1)
+z_index = 10
 texture = ExtResource("2_cca2t")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-2, -10, 3, -10, 11, -2, 11, 12, -10, 12, -10, -2)
 
 [node name="Timeout" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 20.0
 autostart = true
 
 [connection signal="timeout" from="Timeout" to="." method="_on_timeout_timeout"]

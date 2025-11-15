@@ -34,7 +34,12 @@ func die() -> void:
 		await get_tree().create_timer(2.0).timeout
 		player.velocity.x = 0.0
 		player.velocity.y = 0.0
-		get_tree().change_scene_to_file("res://Main.tscn")
+		player.gravity.force = ProjectSettings.get_setting("physics/2d/default_gravity")
+		player.global_position = Autoload.checkpoint
+		get_tree().call_group("mobs", "queue_free")
+		player.collision_shape.disabled = false
+		is_die = false
+		player.modulate = Color(10000, 10000, 10000, 1)
 	else:	
 		$DeathSound.play()
 		player.collision_shape.disabled = true

@@ -1,9 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dwv3fsaupen72"]
+[gd_scene load_steps=6 format=3 uid="uid://dwv3fsaupen72"]
 
 [ext_resource type="Script" uid="uid://dhidwbtut44mf" path="res://scripts/main_menu.gd" id="1_yqorp"]
+[ext_resource type="FontFile" uid="uid://lxfcs213shq8" path="res://assets/TextFont/RevMiniPixel.ttf" id="2_0ykhv"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_ukcvp"]
-font_size = 35
+[sub_resource type="Theme" id="Theme_2wh52"]
+default_font = ExtResource("2_0ykhv")
+default_font_size = 70
+
+[sub_resource type="Theme" id="Theme_ow34m"]
+default_font = ExtResource("2_0ykhv")
+default_font_size = 70
+
+[sub_resource type="Theme" id="Theme_0ykhv"]
+default_font = ExtResource("2_0ykhv")
+default_font_size = 70
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -16,48 +26,43 @@ script = ExtResource("1_yqorp")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 6
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -99.5
-offset_top = -59.5
-offset_right = 99.5
-offset_bottom = 59.5
-grow_horizontal = 2
+offset_left = -448.0
+offset_top = -61.0
+offset_bottom = 61.0
+grow_horizontal = 0
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "400 The Fall"
-label_settings = SubResource("LabelSettings_ukcvp")
-
 [node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
 layout_mode = 2
+theme = SubResource("Theme_2wh52")
 text = "Jogar"
+flat = true
+
+[node name="TableButton" type="Button" parent="MarginContainer/VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme = SubResource("Theme_ow34m")
+text = "Ranking
+"
+flat = true
 
 [node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
 layout_mode = 2
+theme = SubResource("Theme_0ykhv")
 text = "Sair"
-
-[node name="MarginContainer2" type="MarginContainer" parent="."]
-layout_mode = 1
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="MarginContainer2"]
-layout_mode = 2
-text = "W: Pular
-A: Esquerda
-D: Direita
-Shift: Dash
-K: Respawn
-Mouse Esquerdo: Corda"
+flat = true
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TableButton" to="." method="_on_table_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

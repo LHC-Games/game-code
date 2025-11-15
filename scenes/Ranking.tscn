@@ -1,0 +1,96 @@
+[gd_scene load_steps=5 format=3 uid="uid://brd12aeoi2mbg"]
+
+[ext_resource type="FontFile" uid="uid://lxfcs213shq8" path="res://assets/TextFont/RevMiniPixel.ttf" id="1_lygop"]
+
+[sub_resource type="GDScript" id="GDScript_lygop"]
+script/source = "extends Control
+
+@onready var ranking_label: Label = $VBoxContainer/Rank
+
+func _ready() -> void:
+	display_scores()
+
+
+func display_scores() -> void:
+	var scores = Autoload.ranking_data
+	var best_scores = {}
+	for score in scores:
+		var player_name = score[\"name\"] 
+		var current_time = score[\"time\"]
+		if not best_scores.has(player_name) or current_time < best_scores[player_name][\"time\"]:
+			best_scores[player_name] = score
+	var unique_scores_array = best_scores.values()
+	unique_scores_array.sort_custom(func(a, b): return a[\"time\"] < b[\"time\"])
+	var rank = 1
+	ranking_label.text = \"Ranking\"
+	for score_data in unique_scores_array:
+		ranking_label.text += \"\\n\" + str(rank) + \" - \" + score_data[\"name\"] + \" - \" + str(score_data[\"time\"])
+		rank += 1
+		if rank > 10:
+			break
+
+
+func _on_back_button_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://Main.tscn\")
+"
+
+[sub_resource type="Theme" id="Theme_xbfey"]
+default_font = ExtResource("1_lygop")
+default_font_size = 30
+
+[sub_resource type="Theme" id="Theme_lygop"]
+default_font = ExtResource("1_lygop")
+default_font_size = 50
+
+[node name="Ranking" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_lygop")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.917647, 0.956863, 0.988235, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -20.0
+offset_right = 37.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Rank" type="Label" parent="VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme = SubResource("Theme_xbfey")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 384.0
+offset_bottom = 152.0
+
+[node name="BackButton" type="Button" parent="MarginContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme = SubResource("Theme_lygop")
+text = "Voltar"
+flat = true
+
+[connection signal="pressed" from="MarginContainer/BackButton" to="." method="_on_back_button_pressed"]

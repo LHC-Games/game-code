@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 200.0
+@export var speed = 125.0
 @export var difficulty = 0.0
 var target: Vector2
 

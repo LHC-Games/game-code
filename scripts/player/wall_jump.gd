@@ -4,14 +4,14 @@ extends Node2D
 @onready var right_wall_cast = $RightWall
 @onready var left_wall_cast = $LeftWall
 
-@export var wall_jump_force = 700.0
+@export var wall_jump_force = 600.0
 @export var wall_slide_speed = 100.0
 
 var is_wall_sliding = false
 
 
 func _physics_process(_delta: float) -> void:
-	if on_wall() and not player.is_on_floor():
+	if on_wall() and not player.is_on_floor() and not player.die.is_die:
 		is_wall_sliding = true
 		player.velocity.y = min(player.velocity.y, wall_slide_speed)
 	else:

@@ -4,7 +4,7 @@ extends Node2D
 @export var blue: PackedScene
 @export var yellow: PackedScene
 @export var green: PackedScene
-var spawn_radius = 400.0
+var spawn_radius = 1000.0
 var difficulty = 0.0
 
 
@@ -15,8 +15,8 @@ func _on_pink_respawn_timeout() -> void:
 	var random_angle = randf_range(0.0, 2.0 * PI)
 	var random_offset = Vector2.from_angle(random_angle) * spawn_radius
 	new_pink.global_position = spawn_center + random_offset
+	new_pink.add_to_group("mobs")
 	add_child(new_pink)
-	print("Nova criança! :) em " + str(new_pink.global_position))
 
 
 func _on_yellow_respawn_timeout() -> void:
@@ -26,6 +26,7 @@ func _on_yellow_respawn_timeout() -> void:
 	var random_angle = randf_range(0.0, 2.0 * PI)
 	var random_offset = Vector2.from_angle(random_angle) * spawn_radius
 	new_yellow.global_position = spawn_center + random_offset
+	new_yellow.add_to_group("mobs")
 	add_child(new_yellow)
 
 
@@ -36,6 +37,7 @@ func _on_blue_respawn_timeout() -> void:
 	var random_angle = randf_range(0.0, 2.0 * PI)
 	var random_offset = Vector2.from_angle(random_angle) * spawn_radius
 	new_blue.global_position = spawn_center + random_offset
+	new_blue.add_to_group("mobs")
 	add_child(new_blue)
 
 
@@ -46,6 +48,7 @@ func _on_green_respawn_timeout() -> void:
 	var random_angle = randf_range(0.0, 2.0 * PI)
 	var random_offset = Vector2.from_angle(random_angle) * spawn_radius
 	new_green.global_position = spawn_center + random_offset
+	new_green.add_to_group("mobs")
 	add_child(new_green)
 
 

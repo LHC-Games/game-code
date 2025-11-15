@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 700.0
+@export var speed = 500.0
 @export var difficulty = 0.0
 var target: Vector2
 
@@ -11,7 +11,7 @@ func _ready() -> void:
 	velocity = direction * (speed + difficulty)
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	move_and_slide()
 
 

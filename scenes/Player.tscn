@@ -166,6 +166,8 @@ stream = ExtResource("9_bruh7")
 
 [node name="WallJump" type="Node2D" parent="."]
 script = ExtResource("7_bruh7")
+wall_jump_force = 900.0
+wall_slide_speed = 75.0
 
 [node name="RightWall" type="RayCast2D" parent="WallJump"]
 target_position = Vector2(9, 0)

@@ -1,0 +1,109 @@
+[gd_scene load_steps=7 format=3 uid="uid://bds7n60ddcfx0"]
+
+[ext_resource type="FontFile" uid="uid://lxfcs213shq8" path="res://assets/TextFont/RevMiniPixel.ttf" id="1_jvnd5"]
+
+[sub_resource type="GDScript" id="GDScript_jvnd5"]
+script/source = "extends CanvasLayer
+
+
+func _ready() -> void:
+	hide()
+	process_mode = PROCESS_MODE_ALWAYS
+
+
+func _unhandled_input(event):
+	if event.is_action_pressed(\"Pause\"):
+		show()
+		get_tree().paused = true
+
+
+func _on_quit_button_pressed() -> void:
+	get_tree().quit()
+
+
+func _on_return_button_pressed() -> void:
+	hide()
+	get_tree().paused = false
+
+
+func _on_home_button_pressed() -> void:
+	hide()
+	Hud.pause_timer()
+	Hud.hide_timer()
+	get_tree().paused = false
+	get_tree().change_scene_to_file(\"res://Main.tscn\")
+"
+
+[sub_resource type="Theme" id="Theme_cuw72"]
+default_font = ExtResource("1_jvnd5")
+default_font_size = 50
+
+[sub_resource type="Theme" id="Theme_jvnd5"]
+default_font = ExtResource("1_jvnd5")
+default_font_size = 30
+
+[sub_resource type="Theme" id="Theme_g4jo0"]
+default_font = ExtResource("1_jvnd5")
+default_font_size = 30
+
+[sub_resource type="Theme" id="Theme_komsw"]
+default_font = ExtResource("1_jvnd5")
+default_font_size = 30
+
+[node name="PauseMenu" type="CanvasLayer"]
+script = SubResource("GDScript_jvnd5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.917647, 0.956863, 0.988235, 0.490196)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.5
+offset_top = -20.0
+offset_right = 33.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme = SubResource("Theme_cuw72")
+text = "Pausado"
+
+[node name="ReturnButton" type="Button" parent="MarginContainer/VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme = SubResource("Theme_jvnd5")
+text = "Voltar"
+flat = true
+
+[node name="HomeButton" type="Button" parent="MarginContainer/VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme = SubResource("Theme_g4jo0")
+text = "Menu principal"
+flat = true
+
+[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme = SubResource("Theme_komsw")
+text = "Sair do jogo"
+flat = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HomeButton" to="." method="_on_home_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
