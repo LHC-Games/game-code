@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://62hjbvoa1tbj"]
+[gd_scene load_steps=5 format=3 uid="uid://62hjbvoa1tbj"]
+
+[ext_resource type="FontFile" uid="uid://lxfcs213shq8" path="res://assets/TextFont/RevMiniPixel.ttf" id="1_fyjtc"]
 
 [sub_resource type="GDScript" id="GDScript_fyjtc"]
 script/source = "extends CanvasLayer
@@ -67,6 +69,7 @@ grow_vertical = 2
 [node name="Button1" type="Button" parent="Level1/MarginContainer"]
 layout_mode = 2
 theme = SubResource("Theme_4da38")
+theme_override_fonts/font = ExtResource("1_fyjtc")
 text = "Parabéns! 
 
 Você chegou ao fim da primeira fase!
@@ -99,6 +102,7 @@ grow_vertical = 2
 [node name="Button2" type="Button" parent="Level2/MarginContainer"]
 layout_mode = 2
 theme = SubResource("Theme_x44xi")
+theme_override_fonts/font = ExtResource("1_fyjtc")
 text = "Você conseguiu <nome>!
 
 Seu tempo foi: 00:00

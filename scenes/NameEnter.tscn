@@ -50,6 +50,7 @@ theme_override_fonts/font = ExtResource("1_jphe7")
 text = "Digite seu nome e confirme com enter"
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Label"]
+layout_mode = 0
 offset_left = -32.0
 offset_top = 81.0
 offset_right = 329.0
@@ -58,6 +59,7 @@ theme_override_fonts/font = ExtResource("1_jphe7")
 text = "Todos os personagens são meramente fictícios"
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Label/Label"]
+layout_mode = 0
 offset_left = -44.0
 offset_top = 35.0
 offset_right = 427.0
