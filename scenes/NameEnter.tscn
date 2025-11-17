@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bj85j3w8savcn"]
+[gd_scene load_steps=3 format=3 uid="uid://bj85j3w8savcn"]
+
+[ext_resource type="FontFile" uid="uid://lxfcs213shq8" path="res://assets/TextFont/RevMiniPixel.ttf" id="1_jphe7"]
 
 [sub_resource type="GDScript" id="GDScript_aaq88"]
 script/source = "extends Control
@@ -44,10 +46,28 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_jphe7")
 text = "Digite seu nome e confirme com enter"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Label"]
+offset_left = -32.0
+offset_top = 81.0
+offset_right = 329.0
+offset_bottom = 104.0
+theme_override_fonts/font = ExtResource("1_jphe7")
+text = "Todos os personagens são meramente fictícios"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Label/Label"]
+offset_left = -44.0
+offset_top = 35.0
+offset_right = 427.0
+offset_bottom = 58.0
+theme_override_fonts/font = ExtResource("1_jphe7")
+text = "Qualquer semelhança com a realidade é mera coincidência"
 
 [node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_jphe7")
 select_all_on_focus = true
 
 [connection signal="text_submitted" from="MarginContainer/VBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]

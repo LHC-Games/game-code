@@ -4,8 +4,8 @@ extends Node2D
 @onready var right_wall_cast = $RightWall
 @onready var left_wall_cast = $LeftWall
 
-@export var wall_jump_force = 600.0
-@export var wall_slide_speed = 100.0
+@export var wall_jump_force = 500.0
+@export var wall_slide_speed = 200.0
 
 var is_wall_sliding = false
 

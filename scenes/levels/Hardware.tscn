@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://blmyfaor3x0fq"]
+[gd_scene load_steps=23 format=4 uid="uid://blmyfaor3x0fq"]
 
 [ext_resource type="Texture2D" uid="uid://62qj707rabf3" path="res://assets/assetsfont.png" id="2_pirhb"]
 [ext_resource type="Texture2D" uid="uid://cyl87cvfstxnh" path="res://assets/Cooler.png" id="3_t0rd8"]
@@ -9,9 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bn00764en6jcg" path="res://scenes/obstacle/Shock.tscn" id="8_6cec1"]
 [ext_resource type="Texture2D" uid="uid://dht1j1w78w2hj" path="res://assets/FontAssets.png" id="9_6cec1"]
 [ext_resource type="PackedScene" uid="uid://k0i1wqeoof5h" path="res://scenes/FinalPoint.tscn" id="12_0kv8f"]
-[ext_resource type="Script" uid="uid://2u7sw33qtkar" path="res://scripts/node_2d.gd" id="13_3rl28"]
 [ext_resource type="PackedScene" uid="uid://dkipgfk84l0r8" path="res://scenes/obstacle/Processor.tscn" id="14_3rl28"]
-[ext_resource type="Texture2D" uid="uid://v6lkfdeh38sn" path="res://assets/dialog_icon-removebg-preview.png" id="14_p2txi"]
+[ext_resource type="FontFile" uid="uid://lxfcs213shq8" path="res://assets/TextFont/RevMiniPixel.ttf" id="14_p2txi"]
 [ext_resource type="PackedScene" uid="uid://bds7n60ddcfx0" path="res://scenes/PauseMenu.tscn" id="15_0kv8f"]
 [ext_resource type="PackedScene" uid="uid://bufogtl1y0snu" path="res://scenes/obstacle/Wind.tscn" id="15_p2txi"]
 [ext_resource type="AudioStream" uid="uid://bsko0hptuvkgv" path="res://assets/soundeffects/Byte Rush.mp3" id="17_crxwn"]
@@ -232,14 +231,6 @@ tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 4
 sources/0 = SubResource("TileSetAtlasSource_wc5i2")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hxptn"]
-texture = ExtResource("2_pirhb")
-texture_region_size = Vector2i(64, 64)
-7:7/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_juowp"]
-sources/0 = SubResource("TileSetAtlasSource_hxptn")
-
 [sub_resource type="GDScript" id="GDScript_crxwn"]
 script/source = "extends AudioStreamPlayer
 
@@ -248,9 +239,6 @@ script/source = "extends AudioStreamPlayer
 func _on_finished() -> void:
 	play()
 "
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0kv8f"]
-size = Vector2(98, 87)
 
 [node name="Hardware" type="Node2D"]
 
@@ -263,11 +251,6 @@ tile_set = SubResource("TileSet_ulx1c")
 [node name="TileMapLayer" type="TileMapLayer" parent="TileMapLayers"]
 tile_map_data = PackedByteArray("AAD3//T/AAAEAAAAAAD8//T/AAAEAAAAAADx/+7/AAAEAAAAAADu/+j/AAAEAAAAAAD1/+L/AAAEAAAAAAD2/+L/AAAEAAAAAAD3/+L/AAAEAAAAAAAQAPr/AAAAAAAAAAARAPr/AAADAAAAAAAJAPn/AAAAAAAAAAAKAPn/AAADAAAAAAADAPj/AAADAAAAAAABAPj/AAAAAAAAAAACAPj/AAACAAAAAAAEAO7/AAACAAAAAAAFAO7/AAACAAAAAAAGAO7/AAACAAAAAAAHAO7/AAACAAAAAAAIAO7/AAACAAAAAAAJAO7/AAACAAAAAAAKAO7/AAACAAAAAAALAO7/AAACAAAAAAAMAO7/AAACAAAAAAANAO7/AAACAAAAAAAOAO7/AAACAAAAAAAPAO7/AAACAAAAAAAQAO7/AAACAAAAAAARAO7/AAACAAAAAAASAO7/AAACAAAAAAATAO7/AAACAAAAAAAUAO7/AAACAAAAAAAVAO7/AAACAAAAAAAWAO7/AAACAAAAAAAXAO7/AAACAAAAAAAYAO7/AAACAAAAAAAZAO7/AAADAAAAAAADAO7/AAAAAAAAAAAfAPP/AAAAAAAAAAAgAPP/AAACAAAAAAAhAPP/AAACAAAAAAAiAPP/AAACAAAAAAAjAPP/AAACAAAAAAAkAPP/AAACAAAAAAAlAPP/AAACAAAAAAAmAPP/AAACAAAAAAAnAPP/AAACAAAAAAAoAPP/AAACAAAAAAApAPP/AAACAAAAAAAqAPP/AAACAAAAAAArAPP/AAACAAAAAAAsAPP/AAACAAAAAAAtAPP/AAACAAAAAAAuAPP/AAACAAAAAAAvAPP/AAACAAAAAAAwAPP/AAACAAAAAAAxAPP/AAACAAAAAAAyAPP/AAACAAAAAAAzAPP/AAADAAAAAAA6AAQAAAADAAAAAAAnAAQAAAAAAAAAAAAoAAQAAAACAAAAAAApAAQAAAACAAAAAAAqAAQAAAACAAAAAAArAAQAAAACAAAAAAAsAAQAAAACAAAAAAAtAAQAAAACAAAAAAAuAAQAAAACAAAAAAAvAAQAAAACAAAAAAAwAAQAAAACAAAAAAAxAAQAAAACAAAAAAAyAAQAAAACAAAAAAAzAAQAAAACAAAAAAA0AAQAAAACAAAAAAA3AAQAAAACAAAAAAA4AAQAAAACAAAAAAA5AAQAAAACAAAAAAA2AAQAAAACAAAAAAA1AAQAAAACAAAAAAAhABMAAAAAAAAAAAAjABMAAAADAAAAAAAiABMAAAACAAAAAAD//wcAAAAAAAAAAAAAAAcAAAADAAAAAAAEAAcAAAADAAAAAAADAAcAAAAAAAAAAAAnABMAAAAAAAAAAAA8ABMAAAADAAAAAAAoABMAAAACAAAAAAApABMAAAACAAAAAAAqABMAAAACAAAAAAArABMAAAACAAAAAAAsABMAAAACAAAAAAAtABMAAAACAAAAAAAuABMAAAACAAAAAAAvABMAAAACAAAAAAAwABMAAAACAAAAAAAxABMAAAACAAAAAAAyABMAAAACAAAAAAAzABMAAAACAAAAAAA0ABMAAAACAAAAAAA1ABMAAAACAAAAAAA2ABMAAAACAAAAAAA3ABMAAAACAAAAAAA4ABMAAAACAAAAAAA5ABMAAAACAAAAAAA6ABMAAAACAAAAAAA7ABMAAAACAAAAAAA=")
 tile_set = SubResource("TileSet_hxptn")
-
-[node name="TileMapLayer2" type="TileMapLayer" parent="TileMapLayers"]
-z_index = -5
-tile_map_data = PackedByteArray("AADV/xwAAAAHAAcAAAA=")
-tile_set = SubResource("TileSet_juowp")
 
 [node name="Checkpoints" type="Node" parent="."]
 
@@ -322,12 +305,12 @@ start_time = 1.0
 [node name="Shock wj1" parent="Killables/Shock/Shock Wall Jump" instance=ExtResource("8_6cec1")]
 position = Vector2(-930, -1066)
 start_time = 1.0
-duration_deactivated = 2.0
+duration_deactivated = 4.0
 
 [node name="Shock wj2" parent="Killables/Shock/Shock Wall Jump" instance=ExtResource("8_6cec1")]
 position = Vector2(-1122, -1450)
 start_time = 2.0
-duration_deactivated = 2.0
+duration_deactivated = 4.0
 
 [node name="Shock Dash" type="Node" parent="Killables/Shock"]
 
@@ -377,7 +360,7 @@ rotation = -3.14159
 direction = 1
 
 [node name="Player2" parent="." instance=ExtResource("5_yao8h")]
-position = Vector2(-920, 464)
+position = Vector2(-1006, -551)
 
 [node name="Background music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_crxwn")
@@ -385,26 +368,6 @@ autoplay = true
 script = SubResource("GDScript_crxwn")
 
 [node name="Dialogs" type="Node" parent="."]
-
-[node name="dialog1" type="Node2D" parent="Dialogs"]
-position = Vector2(-679, 455)
-script = ExtResource("13_3rl28")
-
-[node name="texture" type="Sprite2D" parent="Dialogs/dialog1"]
-visible = false
-position = Vector2(-6, -46)
-scale = Vector2(0.3, 0.311765)
-texture = ExtResource("14_p2txi")
-region_enabled = true
-region_rect = Rect2(55, 70, 115, 85)
-
-[node name="area_sign" type="Area2D" parent="Dialogs/dialog1"]
-position = Vector2(0, 5)
-collision_layer = 2
-
-[node name="collision" type="CollisionShape2D" parent="Dialogs/dialog1/area_sign"]
-position = Vector2(-2, -10.5)
-shape = SubResource("RectangleShape2D_0kv8f")
 
 [node name="PauseMenu" parent="." instance=ExtResource("15_0kv8f")]
 visible = false
@@ -419,63 +382,107 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="Labels"]
+light_mask = 16
+visibility_layer = 16
+z_index = -10
 layout_mode = 0
 offset_left = -984.0
 offset_top = 256.0
 offset_right = -749.0
 offset_bottom = 279.0
-text = "Use <A> ou <D> para se mover"
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_p2txi")
+text = "<A> e <D> para se mover"
+vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="Labels"]
+light_mask = 16
+visibility_layer = 16
+z_index = -10
 layout_mode = 0
 offset_left = 336.0
 offset_top = 144.0
 offset_right = 701.0
 offset_bottom = 219.0
-text = "Uso o ponteiro do mouse para mirar e 
-segure o botão esquerdo do mouse
-enquanto está no ar para fixar a corda"
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_p2txi")
+text = "Use o ponteiro do mouse para mirar (🖱️)
+
+Segure o botão esquerdo do mouse
+enquanto estiver no ar para usar a corda"
+vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="Labels"]
+light_mask = 16
+visibility_layer = 16
+z_index = -10
 layout_mode = 0
 offset_left = -264.0
 offset_top = 256.0
 offset_right = -21.0
 offset_bottom = 279.0
-text = "Use <W> ou <Space> para pular"
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_p2txi")
+text = "<W> ou <Space> para pular"
+vertical_alignment = 1
 
 [node name="Label4" type="Label" parent="Labels"]
+light_mask = 16
+visibility_layer = 16
+z_index = -10
 layout_mode = 0
 offset_left = 896.0
 offset_top = 144.0
 offset_right = 1147.0
 offset_bottom = 167.0
-text = "Use <Shift> para disparar o dash"
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_p2txi")
+text = " <Shift> para usar o dash"
+vertical_alignment = 1
 
 [node name="Label5" type="Label" parent="Labels"]
+light_mask = 16
+visibility_layer = 16
+z_index = -10
 layout_mode = 0
 offset_left = 1224.0
 offset_top = 392.0
 offset_right = 1520.0
 offset_bottom = 441.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_p2txi")
 text = "Pule enquanto estiver fixado à parede
-para disparar o wall jump"
+para usar o wall jump"
+vertical_alignment = 1
 
 [node name="Label6" type="Label" parent="Labels"]
+light_mask = 16
+visibility_layer = 16
+z_index = -10
 layout_mode = 0
 offset_left = -632.0
 offset_top = 256.0
 offset_right = -393.0
 offset_bottom = 305.0
-text = "Pressione <Esc> para pausar
-Pressione <R> para dar respaw"
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_p2txi")
+text = "<Esc> pausar
+
+<R> respawn"
+vertical_alignment = 1
 
 [node name="Label7" type="Label" parent="Labels"]
+light_mask = 16
+visibility_layer = 16
+z_index = -10
 layout_mode = 0
 offset_left = 1296.0
 offset_top = -496.0
 offset_right = 1459.0
 offset_bottom = -473.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_p2txi")
 text = "Isso é um checkpoint"
+vertical_alignment = 1
 
 [connection signal="finished" from="Background music" to="Background music" method="_on_finished"]

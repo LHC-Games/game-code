@@ -2,9 +2,7 @@ extends Node2D
 
 @onready var player := get_parent()
 
-
 var is_die = false
-
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("respawn") and not is_die:
@@ -27,13 +25,13 @@ func die() -> void:
 	if Autoload.in_software:
 		$DeathSound.play()
 		player.collision_shape.disabled = true
-		player.grapple.retract()
+		player.grapple.die_retract()
 		is_die = true
 		player.modulate = Color(10000, 10000, 10000, 0.5)
 		player.velocity.x = sign(player.velocity.x) * 15
 		player.velocity.y = 0.0
 		player.gravity.force = -100
-		await get_tree().create_timer(2.0).timeout
+		await get_tree().create_timer(0.8).timeout
 		player.velocity.x = 0.0
 		player.velocity.y = 0.0
 		player.gravity.force = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -45,13 +43,13 @@ func die() -> void:
 	else:	
 		$DeathSound.play()
 		player.collision_shape.disabled = true
-		player.grapple.retract()
+		player.grapple.die_retract()
 		is_die = true
 		player.modulate = Color(0.75, 0.75, 0.75, 0.5)
 		player.velocity.x = sign(player.velocity.x) * 15
 		player.velocity.y = 0.0
 		player.gravity.force = -100
-		await get_tree().create_timer(2.0).timeout
+		await get_tree().create_timer(0.8).timeout
 		player.velocity.x = 0.0
 		player.velocity.y = 0.0
 		player.gravity.force = ProjectSettings.get_setting("physics/2d/default_gravity")

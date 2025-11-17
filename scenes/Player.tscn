@@ -148,13 +148,13 @@ script = ExtResource("5_cw2d6")
 
 [node name="JumpSound" type="AudioStreamPlayer2D" parent="Jump"]
 stream = ExtResource("5_qu4a1")
-volume_db = -6.933
+volume_db = -0.99
 
 [node name="Dash" type="Node2D" parent="."]
 script = ExtResource("6_khinc")
 
 [node name="DashCooldown" type="Timer" parent="Dash"]
-wait_time = 1.2
+wait_time = 0.7
 one_shot = true
 
 [node name="DashDuration" type="Timer" parent="Dash"]
@@ -179,7 +179,7 @@ collision_mask = 2
 
 [node name="WallJumpSound" type="AudioStreamPlayer2D" parent="WallJump"]
 stream = ExtResource("8_khinc")
-volume_db = -0.991
+volume_db = -0.001
 
 [node name="Grapple" type="Node2D" parent="."]
 script = ExtResource("12_p7iby")
@@ -201,15 +201,18 @@ default_color = Color(1, 1, 1, 0.0196078)
 
 [node name="GrappleLauchSound" type="AudioStreamPlayer" parent="Grapple"]
 stream = ExtResource("10_6eyey")
+volume_db = 1.874
 
 [node name="GrappleRetractSound" type="AudioStreamPlayer" parent="Grapple"]
 stream = ExtResource("11_d3wef")
+volume_db = 1.874
 
 [node name="Die" type="Node2D" parent="."]
 script = ExtResource("15_srp4u")
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="Die"]
 stream = ExtResource("7_cw2d6")
+volume_db = 2.971
 
 [node name="Gravity" type="Node2D" parent="."]
 script = ExtResource("17_jfpux")
@@ -217,7 +220,7 @@ script = ExtResource("17_jfpux")
 [node name="LandingSound" type="AudioStreamPlayer2D" parent="Gravity"]
 position = Vector2(960, -464)
 stream = ExtResource("6_70d11")
-volume_db = 10.133
+volume_db = 16.075
 
 [node name="WallSlide" type="AnimatedSprite2D" parent="."]
 visible = false

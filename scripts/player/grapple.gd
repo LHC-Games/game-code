@@ -46,7 +46,11 @@ func retract():
 	$GrappleRetractSound.play()
 	launched = false
 	rope.hide()
-
+	
+func die_retract():
+		launched = false
+		rope.hide()
+		
 
 func handle_grapple(delta):
 	var target_dir = player.global_position.direction_to(target)
