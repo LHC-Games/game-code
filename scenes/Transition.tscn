@@ -74,7 +74,7 @@ text = "Parabéns!
 
 Você chegou ao fim da primeira fase!
 
-Pressione para continuar..."
+Clique para continuar..."
 flat = true
 
 [node name="Level2" type="Control" parent="."]
@@ -107,7 +107,7 @@ text = "Você conseguiu <nome>!
 
 Seu tempo foi: 00:00
 
-Pressione para continuar..."
+Clique para continuar..."
 flat = true
 
 [connection signal="pressed" from="Level1/MarginContainer/Button1" to="." method="_on_button_1_pressed"]

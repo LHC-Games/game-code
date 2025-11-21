@@ -16,6 +16,7 @@ func _physics_process(_delta: float) -> void:
 		player.velocity.y = min(player.velocity.y, wall_slide_speed)
 	else:
 		is_wall_sliding = false
+		
 	if is_wall_sliding and Input.is_action_just_pressed("up"):
 		wall_jump()
 
