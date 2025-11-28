@@ -34,7 +34,6 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 
-			
 	move_and_slide()
 	if right_wall_cast.is_colliding():
 		wall_slide.flip_h = true
@@ -49,3 +48,4 @@ func _physics_process(_delta: float) -> void:
 		tmp.y = 0
 		wall_slide.position = tmp
 		
+# Gravidade padrão
