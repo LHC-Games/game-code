@@ -1,10 +1,12 @@
 extends CharacterBody2D
 
+
 @export var white = false
 
 @onready var move := $Move
 @onready var dash := $Dash
 @onready var jump := $Jump
+@onready var JUMP_VELOCITY: int = -400
 @onready var wall_jump := $WallJump
 @onready var animation := $Animation
 @onready var grapple := $Grapple
@@ -18,6 +20,10 @@ extends CharacterBody2D
 @export var coyote_duration: float = 0.12
 var coyote_timer: float = 0.0
 
+@export var jump_buffer_time: float = 0.15
+var jump_buffer_counter: float = 0.0
+
+
 func _ready() -> void:
 	set_floor_max_angle(0.7)
 	Autoload.checkpoint = global_position
@@ -27,19 +33,7 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	
-#===========================================Coyote Timer=====================================
-	if is_on_floor():
-		coyote_timer = coyote_duration #se tiver no chão reseta o tempo para o máximo
-	
-	else:
-		coyote_timer -= _delta
-		
-	if Input.is_action_just_pressed("up"):
-		if coyote_timer > 0.0:
-			velocity.y = -400
-			coyote_timer = 0.0
-#===============================================================================================
+
 			
 	move_and_slide()
 	if right_wall_cast.is_colliding():
