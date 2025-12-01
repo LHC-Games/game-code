@@ -8,7 +8,8 @@ extends Area2D
 
 
 func _on_body_entered(_body: Node2D) -> void:
-	Autoload.needs_to_die = true
+	if _body == Autoload.player:
+		Autoload.needs_to_die = true
 
 
 func _ready() -> void:

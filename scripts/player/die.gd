@@ -22,9 +22,14 @@ func _physics_process(_delta: float) -> void:
 
 
 func die() -> void:
+	
+	if is_die:
+		return
+		
 	if Autoload.in_software:
 		$DeathSound.play()
-		player.collision_shape.disabled = true
+		player.collision_shape.set_deferred("disabled", true)
+		#player.collision_shape.disabled = true
 		player.grapple.die_retract()
 		is_die = true
 		player.modulate = Color(10000, 10000, 10000, 0.5)
@@ -37,12 +42,20 @@ func die() -> void:
 		player.gravity.force = ProjectSettings.get_setting("physics/2d/default_gravity")
 		player.global_position = Autoload.checkpoint
 		get_tree().call_group("mobs", "queue_free")
-		player.collision_shape.disabled = false
+		
+		player.collision_shape.set_deferred("disabled", false)
+		
+		await get_tree().create_timer(0.1).timeout
+		
+		Autoload.needs_to_die = false
+		#player.collision_shape.disabled = false
+		
 		is_die = false
 		player.modulate = Color(10000, 10000, 10000, 1)
 	else:	
 		$DeathSound.play()
-		player.collision_shape.disabled = true
+		#player.collision_shape.disabled = true
+		player.collision_shape.set_deferred("disabled", true)
 		player.grapple.die_retract()
 		is_die = true
 		player.modulate = Color(0.75, 0.75, 0.75, 0.5)
@@ -54,6 +67,11 @@ func die() -> void:
 		player.velocity.y = 0.0
 		player.gravity.force = ProjectSettings.get_setting("physics/2d/default_gravity")
 		player.global_position = Autoload.checkpoint
-		player.collision_shape.disabled = false
+		
+		#player.collision_shape.disabled = false
+		player.collision_shape.set_deferred("disabled", false)
+		await get_tree().create_timer(0.1).timeout
+		Autoload.needs_to_die = false
+		
 		is_die = false
 		player.modulate = Color(1, 1, 1, 1)
