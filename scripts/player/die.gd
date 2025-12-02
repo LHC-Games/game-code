@@ -32,7 +32,7 @@ func die() -> void:
 		#player.collision_shape.disabled = true
 		player.grapple.die_retract()
 		is_die = true
-		player.modulate = Color(10000, 10000, 10000, 0.5)
+		player.modulate = Color(1, 1, 1, 0.5)
 		player.velocity.x = sign(player.velocity.x) * 15
 		player.velocity.y = 0.0
 		player.gravity.force = -100
@@ -51,7 +51,7 @@ func die() -> void:
 		#player.collision_shape.disabled = false
 		
 		is_die = false
-		player.modulate = Color(10000, 10000, 10000, 1)
+		player.modulate = Color(1, 1, 1, 1)
 	else:	
 		$DeathSound.play()
 		#player.collision_shape.disabled = true

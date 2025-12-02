@@ -27,8 +27,6 @@ var jump_buffer_counter: float = 0.0
 func _ready() -> void:
 	set_floor_max_angle(0.7)
 	Autoload.checkpoint = global_position
-	if white:
-		self.modulate = Color(10000, 10000, 10000, 1)
 	Autoload.player = self
 
 

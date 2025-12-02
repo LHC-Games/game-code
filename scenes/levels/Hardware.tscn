@@ -360,7 +360,7 @@ rotation = -3.14159
 direction = 1
 
 [node name="Player2" parent="." instance=ExtResource("5_yao8h")]
-position = Vector2(2376, -26)
+position = Vector2(3917, 1044)
 
 [node name="Background music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_crxwn")
